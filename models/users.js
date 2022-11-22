@@ -51,6 +51,7 @@ const UserSchema = new Schema({
  timestamps : true
 });
 
+// Hashing password just before saving to DB
  UserSchema.pre('save', async function(next){
 
     this.password = await bcrypt.hash(this.password, 10);
@@ -59,6 +60,7 @@ const UserSchema = new Schema({
 
  });
 
+// Generating Auth Token
  UserSchema.methods.getJwtToken = async function(req, res, next){
      jwt.signal({
         id : __dirname,
