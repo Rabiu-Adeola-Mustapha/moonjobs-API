@@ -7,8 +7,8 @@ const User = require("../models/users");
 const Register = async (req, res) => {
    const { name, email, role, password } = req.body;
 
-   if (!name || !email || !role || !password ) return res.send.json({
-    status : 400,
+   if (!name || !email || !role || !password ) return res.status(400).json({
+    success : false,
     message : "Please enter all fields correctly"
    }); 
 
